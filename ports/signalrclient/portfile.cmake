@@ -1,9 +1,9 @@
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
     REPO SignalR/SignalR-Client-Cpp
-    REF 1.0.0-beta1
-    SHA512 b38f6f946f1499080071949cbcf574405118f9acfb469441e5b5b0df3e5f0d277a83b30e0d613dc5e54732b9071e3273dac1ee65129f994d5a60eef0e45bdf6c
-    HEAD_REF master
+    REF 2410a499fb0daf60be1cdbd01a69b3abf5a57fc1
+    SHA512 fe988957eef375a243737f8bf196a6c184c04965523dfb8615214381020ca29439f17176b4f2d35028fbd7369ddc173978004b29cbada224a2438e3ad1f81f14
+    HEAD_REF dev
     PATCHES
         0001_cmake.patch
         0002_fix-compile-error.patch
