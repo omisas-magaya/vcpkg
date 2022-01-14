@@ -1,25 +1,32 @@
-vcpkg_from_github(
-    OUT_SOURCE_PATH SOURCE_PATH
-    REPO skypjack/entt
-    REF 1e07b981f0b305400f854084c61c4efe2fd36206
-    SHA512 0a61d293b8f6d9eec07711f9ac87c185e158b42da7ca1f91c1ab189a573686a79efa0d15cc76d8e7a2770c6b625df20b8bce1aa16147c0af07cd722a3d32d583
-    HEAD_REF master
-)
+if ("experimental" IN_LIST FEATURES)
+    vcpkg_from_github(
+        OUT_SOURCE_PATH SOURCE_PATH
+        REPO skypjack/entt
+        HEAD_REF experimental
+    )
+else()
+    vcpkg_from_github(
+        OUT_SOURCE_PATH SOURCE_PATH
+        REPO skypjack/entt
+        REF v3.9.0
+        SHA512 b318ea06deb69350a00b3e824462a22fe443f4c778d0934857b68e43f0e6f1fe30c281889c14e3456067629e62a2bbb54491458c43d52ef543b2db8903133922
+        HEAD_REF master
+    )
+endif()
 
-vcpkg_configure_cmake(
+vcpkg_cmake_configure(
     SOURCE_PATH ${SOURCE_PATH}
     DISABLE_PARALLEL_CONFIGURE
-    PREFER_NINJA
     OPTIONS
         -DENTT_BUILD_TESTING=OFF
 )
 
-vcpkg_install_cmake()
+vcpkg_cmake_install()
 
 if(EXISTS ${CURRENT_PACKAGES_DIR}/cmake)
-    vcpkg_fixup_cmake_targets(CONFIG_PATH cmake)
+    vcpkg_cmake_config_fixup(CONFIG_PATH cmake)
 else()
-    vcpkg_fixup_cmake_targets(CONFIG_PATH lib/EnTT/cmake)
+    vcpkg_cmake_config_fixup(CONFIG_PATH lib/EnTT/cmake)
 endif()
 
 file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/debug ${CURRENT_PACKAGES_DIR}/lib)

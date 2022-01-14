@@ -1,14 +1,11 @@
-set(PANGO_VERSION 1.48.0)
-vcpkg_download_distfile(ARCHIVE
-    URLS "http://ftp.gnome.org/pub/GNOME/sources/pango/1.48/pango-${PANGO_VERSION}.tar.xz"
-    FILENAME "pango-${PANGO_VERSION}.tar.xz"
-    SHA512 4819575a583134083819c1548d86bba71af97fd927f7cac05e3903b6d1c84de0ab1b593eea1e17b974f194e2d81123aa46e3af942eef258ad1bd14c72322342e)
-
-vcpkg_extract_source_archive_ex(
+vcpkg_from_gitlab(
+    GITLAB_URL https://gitlab.gnome.org/
     OUT_SOURCE_PATH SOURCE_PATH
-    ARCHIVE ${ARCHIVE}
-    REF ${PANGO_VERSION}
-)
+    REPO GNOME/pango
+    REF  26aadb2508f9022cbfc72e73b558c6791f5d46d9 #v1.50.3
+    SHA512 09c2578300d391b406c14dfbf7f28968d326c6861f7eb1a3a8d1d8c4700d6e9f74c8621a3f2d181abe1f695324c6e5fc3a55eb038ebbe53a53be086983e3a186
+    HEAD_REF master # branch name
+) 
 
 vcpkg_configure_meson(
     SOURCE_PATH ${SOURCE_PATH}
@@ -16,7 +13,7 @@ vcpkg_configure_meson(
         -Dintrospection=disabled # Build the GObject introspection data for Pango
         -Dfontconfig=enabled # Build with FontConfig support.
         -Dsysprof=disabled # include tracing support for sysprof
-        -Dlibtahi=disabled # Build with libthai support
+        -Dlibthai=disabled # Build with libthai support
         -Dcairo=enabled # Build with cairo support
         -Dxft=disabled # Build with xft support
         -Dfreetype=enabled # Build with freetype support
@@ -31,7 +28,7 @@ vcpkg_install_meson()
 vcpkg_fixup_pkgconfig()
 vcpkg_copy_pdbs()
 
-vcpkg_copy_tools(TOOL_NAMES pango-view pango-list AUTO_CLEAN)
+vcpkg_copy_tools(TOOL_NAMES pango-view pango-list pango-segmentation AUTO_CLEAN)
 
 file(INSTALL ${SOURCE_PATH}/COPYING DESTINATION ${CURRENT_PACKAGES_DIR}/share/${PORT} RENAME copyright)
 
