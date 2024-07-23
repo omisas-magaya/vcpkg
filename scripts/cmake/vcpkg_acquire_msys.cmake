@@ -149,7 +149,7 @@ function(vcpkg_acquire_msys out_msys_root)
         SHA512 04d06b9d5479f129f56e8290e0afe25217ffa457ec7bed3e576df08d4a85effd80d6e0ad82bd7541043100799b608a64da3c8f535f8ea173d326da6194902e8c
     )
     z_vcpkg_acquire_msys_declare_package(
-        URL "https://repo.msys2.org/msys/x86_64/gzip-1.11-1-x86_64.pkg.tar.zst"
+        URL "https://repo.msys2.org/msys/x86_64/gzip-1.12-2-x86_64.pkg.tar.zst"
         SHA512 bcd9d7839aef5f2b73c4d39b51838e62626c201c808d512806ba0a1619aee83c7deddb0d499fd93f9815fe351d7ab656c31c9dc7ee1171d77ad6d598e04dfcbe
         DEPS msys2-runtime
     )
