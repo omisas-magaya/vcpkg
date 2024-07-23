@@ -14,9 +14,9 @@ endif()
 
 vcpkg_from_github(
     OUT_SOURCE_PATH SOURCE_PATH
-    REPO openssl/openssl
-    REF "openssl-${VERSION}"
-    SHA512 5a821aaaaa89027ce08a347e5fc216757c2971e29f7d24792609378c54f657839b3775bf639e7330b28b4f96ef0d32869f0a96afcb25c8a2e1c2fe51a6eb4aa3
+    REPO magaya-dev/openssl
+    REF "openssl-${VERSION}+quic"
+    SHA512 fdf8eadce1dc72f621b33ddf2fe5f754882f0b5dd1fd748d1719fb7c0596d5d903f48b088a02995600e8d8b63934082f21df8446ae4d8d2509190ad4bafaa948
     PATCHES
         windows/install-layout.patch
         windows/install-pdbs.patch
